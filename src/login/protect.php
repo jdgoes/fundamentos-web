@@ -1,10 +1,26 @@
 <?php
-if(!isset($_SESSION)){
+if (!isset($_SESSION)) {
     session_start();
 }
 
-if(!isset($_SESSION['id'])) {
-    die("Você não está logado. <a href=\'index.php'\>Clique aqui</a> para fazer login.");
+if (!isset($_SESSION['id'])) {
+    echo '<!DOCTYPE html>
+            <html lang="pt-br">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Redirecionamento</title>
+                    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+                    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script src="../js/alert.js"></script>
+                </head>
+                        <body>
+                            <script>
+                                    showNotLoginAlert();
+                            </script>
+                        </body>
+            </html>';
+    exit();
 }
 
 

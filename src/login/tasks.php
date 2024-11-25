@@ -12,7 +12,7 @@ include 'protect.php';
 </head>
 
 <body>
-    <h1>Bem-vindo, <?php echo isset($_SESSION['username']) ? $_SESSION['username'] : 'Visitante'; ?>!</h1>
+    <h1>Bem-vindo, <?php echo isset($_SESSION['nome']) ? $_SESSION['nome'] : 'Visitante'; ?>!</h1>
     <p>Aqui estão suas tarefas:</p>
     <form action="logout.php" method="post">
         <button type="submit">Logout</button>
