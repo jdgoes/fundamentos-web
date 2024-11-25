@@ -4,9 +4,9 @@ include 'conect.php';
 if (isset($_POST['email']) && isset($_POST['senha'])) {
 
     if (strlen($_POST['email']) == 0) {
-        echo "Preencha seu email";
+        $_SESSION['login_error'] = "Preencha seu email";
     } else if (strlen($_POST['senha']) == 0) {
-        echo "Preencha sua senha";
+        $_SESSION['login_error'] = "Preencha sua senha";
     } else {
         $email = $mysqli->real_escape_string($_POST['email']);
         $senha = $mysqli->real_escape_string($_POST['senha']);
@@ -26,15 +26,17 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                 $_SESSION['nome'] = $usuario['nome'];
 
                 header('Location: tasks.php');
+                exit();
             } else {
-                echo "Email ou senha incorretos";
+                $_SESSION['login_error'] = "Email ou senha incorretos";
             }
         } else {
-            echo "Email ou senha incorretos";
+            $_SESSION['login_error'] = "Email ou senha incorretos";
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -73,6 +75,15 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/alert.js"></script>
+    <script>
+        <?php if (isset($_SESSION['login_error'])): ?>
+            const errorMessage = "<?php echo $_SESSION['login_error']; ?>";
+            showLoginError(errorMessage);
+            <?php unset($_SESSION['login_error']); ?>
+        <?php endif; ?>
+    </script>
 </body>
 
 </html>

@@ -41,3 +41,14 @@ function showNotLoginAlert() {
     });
 }
 
+
+function showLoginError(errorMessage) {
+    if (errorMessage) {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: errorMessage,
+            confirmButtonColor: '#28a745',
+        });
+    }
+}

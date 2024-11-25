@@ -14,20 +14,34 @@ if (isset($_POST['cadastro_nome']) && isset($_POST['cadastro_email']) && isset($
         $cadastro_email = $mysqli->real_escape_string($_POST['cadastro_email']);
         $cadastro_senha = password_hash($_POST['cadastro_senha'], PASSWORD_DEFAULT);
 
-        $sql_code = "INSERT INTO usuarios (nome, email, senha) VALUES ('$cadastro_nome', '$cadastro_email', '$cadastro_senha')";
-        $sql_query = $mysqli->query($sql_code);
 
-        if ($sql_query) {
-            $_SESSION['status_cadastro'] = 'success';
+        $email_check = $mysqli->query("SELECT * FROM usuarios WHERE email = '$cadastro_email'");
+        if ($email_check->num_rows > 0) {
+            $_SESSION['status_cadastro'] = 'O email informado já está cadastrado.';
         } else {
-            $_SESSION['status_cadastro'] = 'error';
+            $nome_check = $mysqli->query("SELECT * FROM usuarios WHERE nome = '$cadastro_nome'");
+            if ($nome_check->num_rows > 0) {
+                $_SESSION['status_cadastro'] = 'O nome de usuário já existe.';
+            } else {
+                $sql_code = "INSERT INTO usuarios (nome, email, senha) VALUES ('$cadastro_nome', '$cadastro_email', '$cadastro_senha')";
+                $sql_query = $mysqli->query($sql_code);
+
+                if ($sql_query) {
+                    $_SESSION['status_cadastro'] = 'success';
+                } else {
+                    $_SESSION['status_cadastro'] = 'error';
+                }
+            }
         }
+
+        $_SESSION['cadastro_nome'] = $cadastro_nome;
+        $_SESSION['cadastro_email'] = $cadastro_email;
     }
+
     header("Location: register.php");
     exit();
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -49,11 +63,11 @@ if (isset($_POST['cadastro_nome']) && isset($_POST['cadastro_email']) && isset($
             <form action="" method="POST">
                 <div id="cadastro-nome" class="form-group">
                     <label for="cadastro_nome">Nome</label>
-                    <input type="text" class="form-control" id="cadastro_nome" name="cadastro_nome" required>
+                    <input type="text" class="form-control" id="cadastro_nome" name="cadastro_nome" value="<?php echo $_SESSION['cadastro_nome'] ?? ''; ?>" required>
                 </div>
                 <div id="cadastro-email" class="form-group">
                     <label for="cadastro_email">Email</label>
-                    <input type="email" class="form-control" id="cadastro_email" name="cadastro_email" required>
+                    <input type="email" class="form-control" id="cadastro_email" name="cadastro_email" value="<?php echo $_SESSION['cadastro_email'] ?? ''; ?>" required>
                 </div>
                 <div id="cadastro-senha" class="form-group">
                     <label for="cadastro_senha">Senha</label>
@@ -66,11 +80,13 @@ if (isset($_POST['cadastro_nome']) && isset($_POST['cadastro_email']) && isset($
             </form>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/alert.js"></script>
+
     <script>
         <?php if (isset($_SESSION['status_cadastro'])): ?>
             const statusCadastro = "<?php echo $_SESSION['status_cadastro']; ?>";
@@ -82,3 +98,4 @@ if (isset($_POST['cadastro_nome']) && isset($_POST['cadastro_email']) && isset($
 </body>
 
 </html>
+
