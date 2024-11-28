@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'conect.php';
+include '../data/conect.php';
 
 if (isset($_POST['cadastro_nome']) && isset($_POST['cadastro_email']) && isset($_POST['cadastro_senha'])) {
     if (strlen($_POST['cadastro_nome']) == 0) {
@@ -38,7 +38,7 @@ if (isset($_POST['cadastro_nome']) && isset($_POST['cadastro_email']) && isset($
         $_SESSION['cadastro_email'] = $cadastro_email;
     }
 
-    header("Location: register.php");
+    header("Location: ../views/register.php");
     exit();
 }
 ?>
@@ -75,7 +75,7 @@ if (isset($_POST['cadastro_nome']) && isset($_POST['cadastro_email']) && isset($
                 </div>
                 <div id="cadastro-buttons" class="form-group text-center">
                     <button type="submit" class="btn btn-primary btn-block">Enviar</button>
-                    <a id="cadastro-link" href="index.php" class="d-block mt-3">Já tem uma conta? Login </a>
+                    <a id="cadastro-link" href="login.php" class="d-block mt-3">Já tem uma conta? Login </a>
                 </div>
             </form>
         </div>

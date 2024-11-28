@@ -1,0 +1,72 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-green {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+}
+
+.navbar-green .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.navbar-green .navbar-brand:hover {
+    color: #e1ffeb;
+}
+
+#logout-button {
+    background-color: #ffffff;
+    color: #28a745;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#logout-button:hover {
+    background-color: #e1ffeb;
+    color: #28a745;
+}
+
+p {
+    text-align: left;
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+#edit-button {
+    background-color: #28a745;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#edit-button:hover {
+    background-color: #218838;
+}
+
+#delete-button {
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+#delete-button:hover {
+    background-color: #474747;
+}

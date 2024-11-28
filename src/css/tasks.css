@@ -1,0 +1,91 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-green {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px;
+}
+
+.navbar-green .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.navbar-green .navbar-brand:hover {
+    color: #e1ffeb;
+}
+
+#logout-button {
+    background-color: #ffffff;
+    color: #28a745;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+#logout-button:hover {
+    background-color: #e1ffeb;
+    color: #28a745;
+}
+
+#add-task-form {
+    max-width: 500px;
+    padding: 30px;
+    margin: 15% auto 0;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#add-task-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    color: #28a745;
+    margin-bottom: 20px;
+}
+
+#task-title, 
+#task-description, 
+#task-category, 
+#task-status {
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#task-title:focus, 
+#task-description:focus, 
+#task-category:focus, 
+#task-status:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+}
+
+#add-task-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#add-task-button:hover {
+    background-color: #218838;
+}

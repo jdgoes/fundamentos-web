@@ -1,5 +1,6 @@
 <?php
-include 'conect.php';
+
+include '../data/conect.php';
 
 if (isset($_POST['email']) && isset($_POST['senha'])) {
 
@@ -25,7 +26,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
                 $_SESSION['id'] = $usuario['id'];
                 $_SESSION['nome'] = $usuario['nome'];
 
-                header('Location: tasks.php');
+                header('Location: home.php');
                 exit();
             } else {
                 $_SESSION['login_error'] = "Email ou senha incorretos";
@@ -47,7 +48,7 @@ if (isset($_POST['email']) && isset($_POST['senha'])) {
     <title>Login</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="../css/login.css" rel="stylesheet">
 </head>
 
 <body>
